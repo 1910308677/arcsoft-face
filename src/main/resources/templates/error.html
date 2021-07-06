@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>登录失败</title>
+        <link type="text/css" rel="stylesheet" media="all" href="/static/styles/global.css" />
+        <link type="text/css" rel="stylesheet" media="all" href="/static/styles/global_color.css" />
+        <script th:src="@{/static/js/dsq.js}"></script>
+    </head>
+    <body class="error_page" onload="startTimes();">
+        <h1 id="error">
+	        密码或者账号错误，&nbsp;<span id="secondes">10</span>&nbsp;秒后将自动跳转，立即跳转请点击&nbsp;
+            <a  href="javascript:resetTimer();">返回</a>
+        </h1>
+    </body>
+</html>

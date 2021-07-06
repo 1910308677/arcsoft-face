@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>员工管理系统</title>
+</head>
+    <script th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/static/bootstrap-3.3.7-dist/js/bootstrap.js}"></script>
+    <link href="/static/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <script th:src="@{/static/js/login.js}"></script>
+    <style type="text/css">
+        #code {
+            font-family: Arial;
+            font-style: italic;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size:18px;
+            color: blue;
+            height:35px;
+            border: 1px solid red;
+        }
+        #size{
+            margin:200px;
+            margin-left:150px;
+        }
+        form{
+            margin-left:150px;
+        }
+        label{
+            color:red;
+        }
+        .index{
+            background-image: url(/static/images/timg.jpg);
+            background-position: center top;
+            background-repeat: no-repeat;
+        }
+    </style>
+<body class="index">
+<div class="container">
+    <div id="size">
+        <h3 style="text-align:center;color:blue">用户登陆注册</h3>
+        <form class="form-horizontal"  action="/login_face" method="post" id="form">
+            <div class="form-group"  >
+                <label for="zid" class="col-sm-2 control-label">用户:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="zid" placeholder="必须大于6位阿拉伯数字" name="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sname" class="col-sm-2 control-label">密码:</label>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" id="sname" placeholder="不能含有非法字符" name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ctl00_txtcode" class="col-sm-2 control-label">验证码:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="ctl00_txtcode" placeholder="请输入正确的验证码，英文不分大小写" />
+                </div>
+                <div class="col-sm-5">
+                    <input type="button" id="code" onclick="createCode()" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-success" type="button" onclick="sub()">登陆</button>
+                    <a class="btn btn-info" href="/index">注册</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

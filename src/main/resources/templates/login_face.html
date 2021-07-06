@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户摄像验证</title>
+</head>
+<script th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/static/bootstrap-3.3.7-dist/js/bootstrap.js}"></script>
+<script th:src="@{/static/js/face_search.js}"></script>
+<link href="/static/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+<style>
+    #size{
+        margin:200px;
+        margin-left:150px;
+    }
+    label{
+        color:red;
+    }
+    form{
+        margin-left:150px;
+    }
+    .all{
+        background:url("static/images/bg.jpg");
+        color:#333333;
+        font-size:16px;
+        font-family:"微软雅黑","SimSun","宋体","Arial Narrow";
+    }
+</style>
+<body  class="all">
+<div class="container">
+    <div id="size">
+        <h3 style="text-align:center;color:blue">人脸识别验证</h3>
+        <form class="form-horizontal" action="/user/login" method="post" id="form">
+            <div class="form-group">
+                <div id="regcoDiv">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-info" type="button" title="人脸识别" value="人脸识别" onclick="getMedia2()">摄像头识别</button>
+                    <button class="btn btn-info" type="button" onclick="imageTo()">图片识别</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <button class="btn btn-success" type="button" onclick="chooseFileChangeComp()">确认</button>
+                    <a class="btn btn-info" href="/log">返回登陆</a>
+                </div>
+                <div>
+                    <img id="imageDivComp"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

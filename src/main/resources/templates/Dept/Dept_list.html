@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>人事管理</title>
+</head>
+    <script th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/static/bootstrap-3.3.7-dist/js/bootstrap.js}"></script>
+    <link href="/static/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <script th:src="@{/static/js/list.js}"></script>
+    <script th:src="@{/static/js/all.js}"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+<style>
+    .all{
+        background:url("static/images/bg.jpg");
+        color:#333333;
+        font-size:16px;
+        font-family:"微软雅黑","SimSun","宋体","Arial Narrow";
+    }
+    #header .container .col-md-2 img {
+        display: none;
+    }
+    #header a {
+        text-decoration: none;
+        color: #000000;
+    }
+    #header .container div {
+        text-align: center;
+        height: 40px;
+        ine-height: 40px;
+    }
+    #header nav a:hover {
+        display: block;
+        border-bottom: 2px solid red;
+    }
+    #Username ul li{
+        line-height: 33px;
+        float: left;
+        list-style: none;
+    }
+    #Username ul ul{
+        display: none;
+    }
+</style>
+<body class="all">
+<div class="container" id="count">
+    <div th:include="User/heeder.html  :: headname"></div>
+    <div style="height:30px"></div>
+    <b>所有员工编号的信息:</b>
+    <input type="text" id="bs" name="bs" />
+    <input type="button" class="btn btn-default btn-success" id="but1" value="确认"/>
+    <b>员工id是:</b>
+    <input type="text" id="id" name="id" />
+    <input type="button" class="btn btn-default btn-success" id="but" value="确认"/>
+    <b>查询所有员工信息:</b>
+    <input type="button" class="btn btn-default btn-success" id="but2" value="确认"/>
+
+    <div style="height:30px"></div>
+    <div style="height:410px">
+        <table class="table table-hover" id="tab">
+            <tr>
+                <th>id</th>
+                <th>部门</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>工资</th>
+                <th>操作</th>
+            </tr>
+            <tr id="tr"></tr>
+        </table>
+    </div>
+</div>
+<div th:include="User/footer.html :: footer"></div>
+</body>
+</html>

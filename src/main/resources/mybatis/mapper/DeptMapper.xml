@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.itboyst.facedemo.mapper.DeptDao">
+<resultMap type="com.itboyst.facedemo.dto.Dept" id="ger_employees">
+ 	<id property="dept" column="dept"/>
+ 	<result property="bumen" column="bumen"/>
+<collection property="employee" ofType="com.itboyst.facedemo.dto.Employee">
+ 	<id property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="sex" column="sex"/>
+    <result property="salacy" column="salacy"/>
+    <result property="s_id" column="s_id"/>
+</collection>
+ </resultMap>
+    <select id="get_dept" resultMap="ger_employees">
+    SELECT * FROM dept AS a  LEFT JOIN employee AS b ON b.s_id = a.dept WHERE a.dept = #{0}
+    </select>
+    
+  <resultMap type="com.itboyst.facedemo.dto.Employee" id="ger_employee">
+ <id property="id" column="id"/>
+ <result property="name" column="name"/>
+ <result property="sex" column="sex"/>
+ <result property="salacy" column="salacy"/>
+ <result property="s_id" column="s_id"/>
+<association property="dept" javaType="com.itboyst.facedemo.dto.Dept">
+ <id property="dept" column="dept"/>
+ <result property="bumen" column="bumen"/>  
+</association>
+  </resultMap> 
+  <select id="get_employee"  resultMap="ger_employee">
+   SELECT * FROM dept AS a LEFT JOIN employee AS b ON b.s_id = a.dept WHERE b.id = #{0}
+  </select>
+  <select id="get_All" resultMap="ger_employee" >
+   SELECT * FROM dept AS a  JOIN employee AS b ON b.s_id = a.dept order by a.dept
+  </select>
+  <resultMap type="com.itboyst.facedemo.dto.Employee" id="employee">
+ <id property="id" column="id"/>
+ <result property="name" column="name"/>
+ <result property="sex" column="sex"/>
+ <result property="salacy" column="salacy"/>
+ <result property="s_id" column="s_id"/>
+   </resultMap> 
+  <delete id="deleteone" parameterType="com.itboyst.facedemo.dto.Emp">
+  delete from employee where id=#{0}
+  </delete>
+  <select id="Oneselect" resultMap="employee">
+  select * from employee where id=#{0}
+  </select>
+  <select id="get_new" resultType="com.itboyst.facedemo.dto.New">
+   select * from dept;
+  </select>
+  <update id="update" parameterType="com.itboyst.facedemo.dto.Emp">
+  update employee set  name=#{name},sex=#{sex},salacy=#{salacy},s_id=#{s_id}  where id=#{id}
+  </update>
+  
+</mapper>

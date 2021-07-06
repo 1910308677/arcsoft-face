@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改员工信息</title>
+</head>
+    <script th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/static/bootstrap-3.3.7-dist/js/bootstrap.js}"></script>
+    <link href="/static/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <script th:src="@{/static/js/all.js}"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+<style>
+    #nav {border-bottom:1px solid #CCCCCC;
+        background:url("static/images/bg.jpg");
+    }
+    .all{
+        background:url("static/images/bg.jpg");
+        color:#333333;
+        font-size:16px;
+        font-family:"微软雅黑","SimSun","宋体","Arial Narrow";
+    }
+    #header .container .col-md-2 img {
+        display: none;
+    }
+    #header a {
+        text-decoration: none;
+        color: #000000;
+    }
+    #header .container div {
+        text-align: center;
+        height: 40px;
+        ine-height: 40px;
+    }
+    #header nav a:hover {
+        display: block;
+        border-bottom: 2px solid red;
+    }
+    #Username ul li{
+        line-height: 33px;
+        float: left;
+        list-style: none;
+    }
+    #Username ul ul{
+        display: none;
+    }
+    table{
+        text-align:center;
+    }
+    p{text-align:center;
+    }
+    .container{
+        padding-right: 100px;
+    }
+</style>
+<script type="text/javascript">
+    function showResult(){
+        var pass=$("#pa").val();
+        var mi=$("#pa1");
+        var mi1=$("#pa2");
+        var mi2=$("#pa3");
+        if(pass!=mi.val()){
+            alert("原密码输入错误");
+            mi.val()==" ";
+        }else if(mi1.val()!=mi2.val()){
+            alert("两次输入不一样");
+            mi1.val()==mi2.val()==" ";
+        }else{
+            $("#main_form").submit();
+        }
+    };
+</script>
+<body class="all">
+<div class="container">
+    <div th:include="/User/heeder.html  :: headname"></div>
+    <div style="height:50px"></div>
+    <h1 style="text-align:center;color:red">管理员密码修改</h1>
+    <div style="height:50px"></div>
+    <div style="margin:1px 180px">
+        <form class="form-horizontal" action="/user/MimaUpdate" method="post" id="main_form">
+            <div class="form-group">
+                <label for="pa1" class="col-sm-2 control-label">原密码:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="pa1" placeholder="请输入你的原来密码"   name="password">
+                    <input type="hidden" name="id" th:value="${session.user.uid} "/>
+                    <input type="hidden" id="pa" th:value="${session.user.password }"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pa2" class="col-sm-2 control-label">新密码:</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control"  id="pa2" placeholder="新密码"  name="pass">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="pa3" class="col-sm-2 control-label">确认密码:</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control"  id="pa3" placeholder="请重新确认新密码 "  name="new_pass">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <button class="btn btn-success" type="button" onclick="showResult();">确认保存</button>
+                    <a class="btn btn-info" href="/Dept_list">返回首页</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div style="height:190px"></div>
+<div th:include="/User/footer.html :: footer"></div>
+</body>
+</html>

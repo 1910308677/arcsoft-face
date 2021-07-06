@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改员工信息</title>
+</head>
+    <script th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/static/bootstrap-3.3.7-dist/js/bootstrap.js}"></script>
+    <link href="/static/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <script th:src="@{/static/js/all.js}"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/common.css" />
+<style>
+    #nav {border-bottom:1px solid #CCCCCC;
+        background:url("/static/images/bg.jpg");
+    }
+    .all{
+        background:url("/static/images/bg.jpg");
+        color:#333333;
+        font-size:16px;
+        font-family:"微软雅黑","SimSun","宋体","Arial Narrow";
+    }
+    #header .container .col-md-2 img {
+        display: none;
+    }
+    #header a {
+        text-decoration: none;
+        color: #000000;
+    }
+    #header .container div {
+        text-align: center;
+        height: 40px;
+        ine-height: 40px;
+    }
+    #header nav a:hover {
+        display: block;
+        border-bottom: 2px solid red;
+    }
+    #Username ul li{
+        line-height: 33px;
+        float: left;
+        list-style: none;
+    }
+    #Username ul ul{
+        display: none;
+    }
+    table{
+        text-align:center;
+    }
+    p{text-align:center;
+    }
+    .container{
+
+        padding-right: 100px;
+    }
+    .all{
+        background-image: url(/static/images/a13.jpg);
+        background-position: center top;
+        background-repeat: no-repeat;
+    }
+</style>
+<body  class="all">
+<div class="container">
+    <div th:include="User/heeder.html  :: headname"></div>
+    <h1 style="text-align:center;color:red">员工修改</h1>
+    <form class="form-horizontal" action="/dept/UpdateEmployee" method="post">
+        <div class="form-group">
+            <label for="sname" class="col-sm-2 control-label">id:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" readonly="readonly" th:value="${ee.id} "  name="id">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="zid" class="col-sm-2 control-label">部门:</label>
+            <div class="col-sm-3">
+                <select class="form-control" name="s_id"  >
+                    <div th:each="new1 : ${list}">
+    <option th:value='${new1.dept}' selected="true"  th:if="${new1.dept eq  ee.s_id}" th:text="${new1.bumen}"></option>
+    <option th:value='${new1.dept}' th:text="${new1.bumen}"></option>
+                    </div>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sname" class="col-sm-2 control-label">姓名:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  id="sname" th:value="${ee.name}"  name="name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="author" class="col-sm-2 control-label">性别:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="author" th:value="${ee.sex }"  name="sex">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lie" class="col-sm-2 control-label">工资:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="lie" th:value="${ee.salacy }"  name="salacy">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-6">
+                <button class="btn btn-success" type="submit">修改</button>
+                <a class="btn btn-info" href="/Dept_list">查看</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

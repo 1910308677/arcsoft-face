@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+</head>
+<script th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/static/bootstrap-3.3.7-dist/js/bootstrap.js}"></script>
+<script th:src="@{/static/js/face_registration.js}"></script>
+<link href="/static/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+<style>
+    #size{
+        margin:200px;
+        margin-left:150px;
+    }
+    label{
+        color:red;
+    }
+    form{
+        margin-left:150px;
+    }
+    .all{
+        background:url("static/images/bg.jpg");
+        color:#333333;
+        font-size:16px;
+        font-family:"微软雅黑","SimSun","宋体","Arial Narrow";
+    }
+</style>
+<body  class="all">
+<div class="container">
+    <div id="size">
+        <h3 style="text-align:center;color:blue">用户人像注册</h3>
+        <form class="form-horizontal" action="/user/register" method="post">
+            <div class="form-group">
+                <label for="userName" class="col-sm-2 control-label">用户姓名:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="在此输入姓名" th:value="${session.us.getName()}"  name="userName" id="userName">
+                </div>
+            </div>
+            <div class="form-group">
+                <div id="mainDiv">
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-info" type="button" onclick="getMedia()">摄像头注册</button>
+                    <button class="btn btn-info" type="button" onclick="imageRecog()">图片注册</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <button class="btn btn-success" type="button" onclick="takePhoto()">提交注册</button>
+                    <a class="btn btn-info" href="/log">返回登陆</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+</head>
+    <script th:src="@{/static/jquery/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/static/bootstrap-3.3.7-dist/js/bootstrap.js}"></script>
+    <link href="/static/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+<style>
+    #a{
+        margin-left:40px;
+        float: left;
+    }
+    .col-sm-2{
+        margin-bottom:10px;
+    }
+    #size{
+        margin:200px;
+        margin-left:150px;
+    }
+    label{
+        color:red;
+    }
+    form{
+        margin-left:150px;
+    }
+    .all{
+        background:url("static/images/bg.jpg");
+        color:#333333;
+        font-size:16px;
+        font-family:"微软雅黑","SimSun","宋体","Arial Narrow";
+    }
+
+</style>
+<body  class="all">
+<div class="container">
+    <div id="size">
+        <h3 style="text-align:center;color:blue">用户注册</h3>
+        <form class="form-horizontal" action="/user/register" method="post">
+            <div class="form-group">
+                <label for="uid" class="col-sm-2 control-label">账号:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="uid" placeholder="u01" name="uid">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">密码:</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control"  placeholder="6位数以上啊" name="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">姓名:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="真实姓名" name="name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sex" class="col-sm-2 control-label">性别:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="男" name="sex">
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-2 control-label">城市:</label>
+                <div  class="col-sm-2">
+                    <select name="city"  class="form-control" >
+                        <option value="北京">北京</option>
+                        <option value="上海">上海</option>
+                        <option value="合肥">合肥</option>
+                        <option value="南京">南京</option>
+                        <option value="长春">长春</option>
+                        <option value="郑州">郑州</option>
+                        <option value="石家庄">石家庄</option>
+                        <option value="沈阳">沈阳</option>
+                        <option value="杭州">杭州</option>
+                        <option value="福州">福州</option>
+                        <option value="济南">济南</option>
+                        <option value="兰州">兰州</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-5">
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-success" type="submit">注册</button>
+                    <a class="btn btn-info" href="/log">返回登陆</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

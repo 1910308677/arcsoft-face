@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="com.itboyst.facedemo.mapper.UserDao">
+    <select id="login" resultType="com.itboyst.facedemo.dto.User">
+    select * from user where uid=#{username} and password=#{password}
+    </select>
+    
+    <insert id="register" parameterType="com.itboyst.facedemo.dto.User">
+    insert into user(uid,name,sex,city,password)  values(#{uid},#{name},#{sex},#{city},#{password})
+    </insert>
+    
+    <resultMap type="com.itboyst.facedemo.dto.User" id="usermap">
+    <id property="uid" column="uid"/>
+    <result property="name" column="name"/>
+    <result property="sex" column="sex"/>
+    <result property="city" column="city"/>
+    <result property="password" column="password"/>
+    </resultMap>
+    
+    <select id="queryall" resultMap="usermap">
+    select uid,t_name,sex,city,password from user
+    </select>
+    
+    <select id="get_user" resultMap="usermap">
+   select * from user where uid=#{0}
+    </select>
+    
+    <update id="UserUpdate" parameterType="com.itboyst.facedemo.dto.User">
+    update user set name=#{name},city=#{city},sex=#{sex} where uid=#{uid}
+    </update>
+    
+    <update id="MimaUpdate" parameterType="com.itboyst.facedemo.dto.User">
+    update user set password=#{0} where uid=#{1}
+    </update>
+    
+</mapper>

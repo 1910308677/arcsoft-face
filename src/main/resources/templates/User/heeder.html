@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>人事管理</title>
+</head>
+<style>
+    #nav {border-bottom:1px solid #CCCCCC;
+        background:url("static/images/bg.jpg");
+    }
+</style>
+<body class="all">
+<div th:fragment="headname" id="header">
+    <div class="container">
+        <div class="col-md-5 col-sm-8 hidden-xs">
+            <p>📞客服电话：4006-89-4006 / 010-57648460/（9:00~21:00)</p>
+        </div>
+        <div class="col-md-2 col-sm-4">
+            <strong id="kehuduan">📱移动客户端</strong>
+        </div>
+        <div class="col-md-2 col-sm-6 hidden-xs">
+            <a href="#">-----</a> &nbsp;
+            <a href="#">在线咨询</a>
+        </div>
+        <div class="col-md-3 col-sm-6 hidden-xs" id="Username">
+            <ul>
+                <li><a href="#" class="btn" role="button" style="color:blue;">帮助中心</a></li>
+                <li><i>|</i></li>
+                <li><a class="btn" role="button"  href="javascript:void:(0)" style="color:red;" th:text="${session.user.name}"></a>
+                    <ul>
+                        <li><a class="btn btn-danger" href="/user/LogOut">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr style="height:2px;border:none;border-top:1px solid #555555;margin-top:5px;margin-bottom: 0px; " />
+    <nav class="navbar" id="nav">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><strong>管理员</strong></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbody">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Dept_list"> 首页<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">查看资料</a></li>
+                    <li><a href="#">------</a></li>
+                    <li><a href="#">------</a></li>
+                    <li><a href="#">新闻公告</a></li>
+                    <li><a href="/user_Mima">更改密码</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" >
+                    <li><a href="/user_info">个人中心</a></li>
+                    <div style="margin:10px;float:left"></div>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

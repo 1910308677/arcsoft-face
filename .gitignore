@@ -1,0 +1,7 @@
+/.idea
+*.iml
+/ai-welcome-cloud/target/
+
+# Project exclude paths
+/classes/
+/target/
